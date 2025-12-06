@@ -6,8 +6,8 @@ import { viteBundler } from '@vuepress/bundler-vite'
 export default defineUserConfig({
   lang: 'en-US',
 
-  title: 'VuePress',
-  description: 'My first VuePress Site',
+  title: 'PersonalWiki',
+  description: 'My PersonalWiki Site',
 
   theme: defaultTheme({
     logo: '/logo.svg',
