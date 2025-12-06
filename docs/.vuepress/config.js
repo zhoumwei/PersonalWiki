@@ -19,6 +19,10 @@ export default defineUserConfig({
         link: '/article/',
       },
       {
+        text: 'Cache',
+        link: '/cache/',
+      },
+      {
         text: 'Database',
         link: '/database/',
       },
@@ -47,6 +51,55 @@ export default defineUserConfig({
         link: '/timeline/',
       },
     ],
+
+    sidebar: {
+      '/cache/': [
+        {
+          text: '缓存',
+          children: [
+            '/cache/redis-notes.md',
+          ]
+        }
+      ],
+      '/database/': [
+        {
+          text: '数据库',
+          children: [
+            '/database/mysql-notes.md',
+          ]
+        }
+      ],
+      '/java/': [
+        {
+          text: 'Java 基础',
+          children: [
+            '/java/java-basic-interview.md',
+            '/java/jmm-notes.md',
+            '/java/jvm-notes.md',
+            '/java/multithreading-interview.md',
+            '/java/multithreading-notes.md',
+          ]
+        }
+      ],
+      '/mq/': [
+        {
+          text: '消息队列',
+          children: [
+            '/mq/kafka-notes.md',
+          ]
+        }
+      ],
+      '/system/': [
+        {
+          text: '系统相关',
+          children: [
+            '/system/brew-tutorial.md',
+            '/system/linux-notes.md',
+            '/system/nvm-tutorial.md',
+          ]
+        }
+      ],
+    },
   }),
 
   plugins: [
