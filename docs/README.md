@@ -1,33 +1,31 @@
 ---
 home: true
-title: Home
+title: 首页
 heroImage: https://vuejs.press/images/hero.png
 actions:
-  - text: Get Started
+  - text: 开始浏览
     link: /get-started.html
     type: primary
 
-  - text: Introduction
-    link: https://vuejs.press/guide/introduction.html
+  - text: 查看分类
+    link: /category/
     type: secondary
 
 features:
-  - title: Simplicity First
-    details: Minimal setup with markdown-centered project structure helps you focus on writing.
-  - title: Vue-Powered
-    details: Enjoy the dev experience of Vue, use Vue components in markdown, and develop custom themes with Vue.
-  - title: Performant
-    details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
-  - title: Themes
-    details: Providing a default theme out of the box. You can also choose a community theme or create your own one.
-  - title: Plugins
-    details: Flexible plugin API, allowing plugins to provide lots of plug-and-play features for your site.
-  - title: Bundlers
-    details: Default bundler is Vite, while Webpack is also supported. Choose the one you like!
+  - title: 技术笔记
+    details: 整理了Java、数据库、缓存、消息队列等核心技术的学习笔记和实践经验
+  - title: 面试总结
+    details: 汇总了各类技术面试题目及详细解析，助力求职准备
+  - title: 系统教程
+    details: 包含Linux、Brew、NVM等常用开发工具的使用指南
+  - title: 持续更新
+    details: 内容持续完善中，不断补充新的技术点和实践经验
+  - title: 结构清晰
+    details: 按照技术类别组织内容，方便快速查找所需资料
+  - title: 实用性强
+    details: 所有内容均来自实际项目经验，注重实用性和可操作性
 
-footer: MIT Licensed | Copyright © 2018-present VuePress Community
+footer: MIT Licensed | Copyright © 2025 Personal Wiki
 ---
 
-This is the content of home page. Check [Home Page Docs][default-theme-home] for more details.
-
-[default-theme-home]: https://vuejs.press/reference/default-theme/frontmatter.html#home-page
+这是我的个人技术知识库网站。这里记录了我的学习笔记、面试经验和各种技术实践。
