@@ -19,6 +19,10 @@ export default defineUserConfig({
         link: '/article/',
       },
       {
+        text: 'BigData',
+        link: '/bigdata/',
+      },
+      {
         text: 'Cache',
         link: '/cache/',
       },
@@ -53,6 +57,20 @@ export default defineUserConfig({
     ],
 
     sidebar: {
+      '/bigdata/': [
+        {
+          text: '大数据',
+          children: [
+            '/bigdata/',
+            '/bigdata/hadoop-notes.md',
+            '/bigdata/hbase-notes.md',
+            '/bigdata/hive-notes.md',
+            '/bigdata/flink-notes.md',
+            '/bigdata/spark-notes.md',
+            '/bigdata/time-series-data.md'
+          ]
+        }
+      ],
       '/cache/': [
         {
           text: '缓存',
