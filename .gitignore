@@ -90,6 +90,11 @@ dist
 .vuepress/.cache/
 .vuepress/.temp/
 
+# VuePress temporary build files
+.vuepress/dist/.temp/
+.vuepress/.temp/
+.vuepress/cache/
+
 # Serverless directories
 .serverless/
 
