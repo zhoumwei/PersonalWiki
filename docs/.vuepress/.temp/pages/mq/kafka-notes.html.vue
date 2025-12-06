@@ -1,0 +1,147 @@
+<template><div><h1 id="kafka-面试题及答案" tabindex="-1"><a class="header-anchor" href="#kafka-面试题及答案"><span>Kafka 面试题及答案</span></a></h1>
+<h2 id="kafka-基础架构" tabindex="-1"><a class="header-anchor" href="#kafka-基础架构"><span>Kafka 基础架构</span></a></h2>
+<h3 id="_1-kafka的基本架构是什么" tabindex="-1"><a class="header-anchor" href="#_1-kafka的基本架构是什么"><span>1. Kafka的基本架构是什么？</span></a></h3>
+<p>Kafka是一个分布式流处理平台，基本架构包括以下几个核心组件：</p>
+<ol>
+<li><strong>Producer（生产者）</strong>：负责发布消息到Kafka Broker</li>
+<li><strong>Consumer（消费者）</strong>：从Kafka Broker读取消息</li>
+<li><strong>Broker（代理）</strong>：Kafka集群中的服务器节点</li>
+<li><strong>Topic（主题）</strong>：消息类别，每条发布到Kafka集群的消息都有一个类别</li>
+<li><strong>Partition（分区）</strong>：每个Topic可以分成多个Partition，提高扩展性和并行度</li>
+<li><strong>Replica（副本）</strong>：每个Partition可以有多个副本，保证容错性</li>
+<li><strong>Leader &amp; Follower</strong>：每个Partition的多个副本中有一个作为Leader，负责读写操作，其他作为Follower只负责数据同步</li>
+</ol>
+<h3 id="_2-kafka如何保证消息的顺序性" tabindex="-1"><a class="header-anchor" href="#_2-kafka如何保证消息的顺序性"><span>2. Kafka如何保证消息的顺序性？</span></a></h3>
+<ol>
+<li>在一个Partition内部，消息是有序的</li>
+<li>如果要保证全局有序，只能给Topic设置一个Partition</li>
+<li>如果需要局部有序，可以按业务规则将相关消息发送到同一个Partition（例如通过key）</li>
+</ol>
+<h3 id="_3-kafka如何实现高可用性" tabindex="-1"><a class="header-anchor" href="#_3-kafka如何实现高可用性"><span>3. Kafka如何实现高可用性？</span></a></h3>
+<ol>
+<li><strong>副本机制</strong>：每个Partition可以设置多个副本，分布在不同的Broker上</li>
+<li><strong>ISR机制</strong>：维护一个与Leader保持同步的副本列表（In-Sync Replicas）</li>
+<li><strong>Leader选举</strong>：当Leader失效时，Controller会选择ISR中的一个副本作为新的Leader</li>
+<li><strong>Controller机制</strong>：Kafka集群中有一个Broker作为Controller，负责管理分区状态和副本Leader选举</li>
+</ol>
+<h3 id="_4-kafka的isr机制是什么" tabindex="-1"><a class="header-anchor" href="#_4-kafka的isr机制是什么"><span>4. Kafka的ISR机制是什么？</span></a></h3>
+<p>ISR（In-Sync Replicas）指的是与Leader保持同步的副本集合。</p>
+<p>工作机制：</p>
+<ul>
+<li>Leader维护一个与其同步的副本列表（ISR）</li>
+<li>副本必须满足两个条件才能留在ISR中：
+<ol>
+<li>与Leader保持连接（在replica.lag.time.max.ms时间内有心跳）</li>
+<li>延迟不能超过replica.lag.max.messages条消息</li>
+</ol>
+</li>
+<li>当副本不满足条件时会被移出ISR</li>
+<li>只有ISR中的副本才有资格参与Leader选举</li>
+</ul>
+<h3 id="_5-kafka如何处理消息丢失问题" tabindex="-1"><a class="header-anchor" href="#_5-kafka如何处理消息丢失问题"><span>5. Kafka如何处理消息丢失问题？</span></a></h3>
+<p>可以从Producer、Broker、Consumer三个层面来看：</p>
+<p><strong>Producer端</strong>：</p>
+<ul>
+<li>设置acks=all，确保消息被所有副本接收后再返回成功</li>
+<li>设置retries参数，启用重试机制</li>
+</ul>
+<p><strong>Broker端</strong>：</p>
+<ul>
+<li>设置min.insync.replicas参数，确保有足够的副本数</li>
+<li>合理配置replication.factor，建议至少为3</li>
+</ul>
+<p><strong>Consumer端</strong>：</p>
+<ul>
+<li>合理设置enable.auto.commit=false</li>
+<li>手动提交offset，确保消息处理完成后才提交</li>
+</ul>
+<h3 id="_6-kafka如何保证消息不被重复消费" tabindex="-1"><a class="header-anchor" href="#_6-kafka如何保证消息不被重复消费"><span>6. Kafka如何保证消息不被重复消费？</span></a></h3>
+<ol>
+<li><strong>At most once</strong>：设置enable.auto.commit=true，可能导致消息丢失但不会重复消费</li>
+<li><strong>At least once</strong>：设置enable.auto.commit=false，手动控制offset提交时机，可能出现重复消费</li>
+<li><strong>Exactly once</strong>：Kafka 0.11版本后支持幂等性生产和事务，可以实现恰好一次语义</li>
+</ol>
+<p>具体做法：</p>
+<ul>
+<li>幂等性生产：设置enable.idempotence=true</li>
+<li>事务支持：使用Kafka事务API</li>
+<li>Consumer端幂等处理：业务逻辑保证幂等性</li>
+</ul>
+<h3 id="_7-kafka的零拷贝技术是什么" tabindex="-1"><a class="header-anchor" href="#_7-kafka的零拷贝技术是什么"><span>7. Kafka的零拷贝技术是什么？</span></a></h3>
+<p>Kafka利用操作系统的零拷贝技术（Zero-Copy）来提高性能。</p>
+<p>传统方式的数据传输需要经过多次内存拷贝：</p>
+<ol>
+<li>从磁盘读取到内核缓冲区</li>
+<li>从内核缓冲区拷贝到用户空间缓冲区</li>
+<li>从用户空间缓冲区拷贝回内核socket缓冲区</li>
+<li>发送到网卡</li>
+</ol>
+<p>而零拷贝通过sendfile系统调用直接将数据从磁盘文件描述符传输到socket描述符，避免了用户态和内核态之间的数据拷贝，大大提高了性能。</p>
+<h3 id="_8-kafka为什么这么快" tabindex="-1"><a class="header-anchor" href="#_8-kafka为什么这么快"><span>8. Kafka为什么这么快？</span></a></h3>
+<p>Kafka之所以性能优秀，主要有以下几个原因：</p>
+<ol>
+<li><strong>顺序读写</strong>：Kafka将消息顺序写入磁盘，充分利用磁盘的顺序读写性能</li>
+<li><strong>零拷贝技术</strong>：使用sendfile系统调用减少数据拷贝和上下文切换</li>
+<li><strong>页缓存</strong>：大量使用操作系统页缓存而非JVM堆内存</li>
+<li><strong>批量发送</strong>：支持批量发送消息，减少网络开销</li>
+<li><strong>数据压缩</strong>：支持多种压缩算法减少网络传输和磁盘IO</li>
+<li><strong>分区并行处理</strong>：通过分区实现水平扩展和并行处理</li>
+</ol>
+<h3 id="_9-kafka如何进行扩容" tabindex="-1"><a class="header-anchor" href="#_9-kafka如何进行扩容"><span>9. Kafka如何进行扩容？</span></a></h3>
+<ol>
+<li><strong>增加Broker</strong>：直接添加新的Broker节点到集群</li>
+<li><strong>重新分配Partition</strong>：使用kafka-reassign-partitions.sh工具重新分配分区</li>
+<li><strong>数据迁移</strong>：Kafka会自动在后台进行数据迁移</li>
+<li><strong>平衡Leader分布</strong>：确保Leader均匀分布在各个Broker上</li>
+</ol>
+<p>注意事项：</p>
+<ul>
+<li>扩容过程中会有网络和磁盘IO开销</li>
+<li>需要合理规划分区数量，避免后续频繁扩容</li>
+<li>建议预留一定的容量空间</li>
+</ul>
+<h3 id="_10-kafka与rabbitmq的区别是什么" tabindex="-1"><a class="header-anchor" href="#_10-kafka与rabbitmq的区别是什么"><span>10. Kafka与RabbitMQ的区别是什么？</span></a></h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Kafka</th>
+<th>RabbitMQ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模型</td>
+<td>发布订阅模型，基于topic</td>
+<td>AMQP协议，多种消息模式</td>
+</tr>
+<tr>
+<td>吞吐量</td>
+<td>高吞吐，适合大数据场景</td>
+<td>中等吞吐</td>
+</tr>
+<tr>
+<td>消息持久化</td>
+<td>默认持久化到磁盘</td>
+<td>可选持久化</td>
+</tr>
+<tr>
+<td>消费语义</td>
+<td>支持exactly-once</td>
+<td>支持at-least-once/at-most-once</td>
+</tr>
+<tr>
+<td>消息确认</td>
+<td>offset机制</td>
+<td>ACK机制</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>日志收集、流处理</td>
+<td>传统消息队列、任务队列</td>
+</tr>
+</tbody>
+</table>
+</div></template>
+
+
