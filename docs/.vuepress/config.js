@@ -35,6 +35,14 @@ export default defineUserConfig({
         link: '/java/',
       },
       {
+        text: 'LLM',
+        link: '/llm/',
+      },
+      {
+        text: 'ML',
+        link: '/ml/',
+      },
+      {
         text: 'MQ',
         link: '/mq/',
       },
@@ -68,6 +76,28 @@ export default defineUserConfig({
             '/bigdata/flink-notes.md',
             '/bigdata/spark-notes.md',
             '/bigdata/time-series-data.md'
+          ]
+        }
+      ],
+      '/llm/': [
+        {
+          text: '大语言模型',
+          children: [
+            '/llm/',
+            '/llm/llm-notes.md',
+            '/llm/transformer-notes.md',
+            '/llm/prompt-engineering.md',
+            '/llm/fine-tuning.md',
+            '/llm/training-optimization.md'
+          ]
+        }
+      ],
+      '/ml/': [
+        {
+          text: '机器学习',
+          children: [
+            '/ml/',
+            '/ml/machine-learning.md'
           ]
         }
       ],
