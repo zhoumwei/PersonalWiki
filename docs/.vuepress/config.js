@@ -19,6 +19,10 @@ export default defineUserConfig({
         link: '/article/',
       },
       {
+        text: 'AIOps',
+        link: '/aiops/',
+      },
+      {
         text: 'BigData',
         link: '/bigdata/',
       },
@@ -65,6 +69,16 @@ export default defineUserConfig({
     ],
 
     sidebar: {
+      '/aiops/': [
+        {
+          text: 'AIOps',
+          children: [
+            '/aiops/',
+            '/aiops/solution-overview.md',
+            '/aiops/anomaly-detection.md'
+          ]
+        }
+      ],
       '/bigdata/': [
         {
           text: '大数据',
@@ -144,6 +158,7 @@ export default defineUserConfig({
             '/system/brew-tutorial.md',
             '/system/linux-notes.md',
             '/system/nvm-tutorial.md',
+            '/system/tencent-cloud-config.md',
           ]
         }
       ],
