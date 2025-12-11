@@ -226,7 +226,7 @@
 <li>
 <p><strong>初始化</strong>：</p>
 <ul>
-<li>执行类构造器<clinit>()方法</li>
+<li>执行类构造器&lt;clinit&gt;()方法</li>
 </ul>
 </li>
 </ol>

@@ -51,6 +51,10 @@ export default defineUserConfig({
         link: '/mq/',
       },
       {
+        text: 'Node.js',
+        link: '/nodejs/',
+      },
+      {
         text: 'System',
         link: '/system/',
       },
@@ -148,6 +152,14 @@ export default defineUserConfig({
           text: '消息队列',
           children: [
             '/mq/kafka-notes.md',
+          ]
+        }
+      ],
+      '/nodejs/': [
+        {
+          text: 'Node.js',
+          children: [
+            '/nodejs/nodejs-interview.md',
           ]
         }
       ],

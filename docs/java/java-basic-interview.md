@@ -328,7 +328,7 @@ Throwable
 2. **验证**：确保Class文件的字节流中包含的信息符合当前虚拟机的要求
 3. **准备**：为类变量分配内存并设置类变量初始值
 4. **解析**：将常量池内的符号引用替换为直接引用
-5. **初始化**：执行类构造器<clinit>()方法
+5. **初始化**：执行类构造器&lt;clinit&gt;()方法
 
 ## 设计模式
 
@@ -367,7 +367,7 @@ Throwable
 答：单例模式有多种实现方式：
 
 1. **饿汉式**：
-```java
+```
 public class Singleton {
     private static final Singleton INSTANCE = new Singleton();
     
@@ -380,7 +380,7 @@ public class Singleton {
 ```
 
 2. **懒汉式(线程不安全)**：
-```java
+```
 public class Singleton {
     private static Singleton instance;
     
@@ -396,7 +396,7 @@ public class Singleton {
 ```
 
 3. **懒汉式(线程安全)**：
-```java
+```
 public class Singleton {
     private static Singleton instance;
     
@@ -412,7 +412,7 @@ public class Singleton {
 ```
 
 4. **双重检查锁定**：
-```java
+```
 public class Singleton {
     private static volatile Singleton instance;
     
@@ -432,7 +432,7 @@ public class Singleton {
 ```
 
 5. **静态内部类**：
-```java
+```
 public class Singleton {
     private Singleton() {}
     
@@ -447,12 +447,12 @@ public class Singleton {
 ```
 
 6. **枚举**：
-```java
+```
 public enum Singleton {
     INSTANCE;
     
     public void doSomething() {
-        // 业务方法
+        // Business method
     }
 }
 ```

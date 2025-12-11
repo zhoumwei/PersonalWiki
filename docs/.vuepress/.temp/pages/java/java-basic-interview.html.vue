@@ -470,7 +470,7 @@
 <li><strong>验证</strong>：确保Class文件的字节流中包含的信息符合当前虚拟机的要求</li>
 <li><strong>准备</strong>：为类变量分配内存并设置类变量初始值</li>
 <li><strong>解析</strong>：将常量池内的符号引用替换为直接引用</li>
-<li><strong>初始化</strong>：执行类构造器<clinit>()方法</li>
+<li><strong>初始化</strong>：执行类构造器&lt;clinit&gt;()方法</li>
 </ol>
 <h2 id="设计模式" tabindex="-1"><a class="header-anchor" href="#设计模式"><span>设计模式</span></a></h2>
 <h3 id="_29-常见的设计模式有哪些" tabindex="-1"><a class="header-anchor" href="#_29-常见的设计模式有哪些"><span>29. 常见的设计模式有哪些？</span></a></h3>
@@ -512,93 +512,93 @@
 <ol>
 <li><strong>饿汉式</strong>：</li>
 </ol>
-<div class="language-java line-numbers-mode" data-highlighter="prismjs" data-ext="java"><pre v-pre><code><span class="line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Singleton</span> <span class="token constant">INSTANCE</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line">public class Singleton {</span>
+<span class="line">    private static final Singleton INSTANCE = new Singleton();</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+<span class="line">    private Singleton() {}</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">        <span class="token keyword">return</span> <span class="token constant">INSTANCE</span><span class="token punctuation">;</span></span>
-<span class="line">    <span class="token punctuation">}</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">    public static Singleton getInstance() {</span>
+<span class="line">        return INSTANCE;</span>
+<span class="line">    }</span>
+<span class="line">}</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="2">
 <li><strong>懒汉式(线程不安全)</strong>：</li>
 </ol>
-<div class="language-java line-numbers-mode" data-highlighter="prismjs" data-ext="java"><pre v-pre><code><span class="line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> instance<span class="token punctuation">;</span></span>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line">public class Singleton {</span>
+<span class="line">    private static Singleton instance;</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+<span class="line">    private Singleton() {}</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">            instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
-<span class="line">        <span class="token punctuation">}</span></span>
-<span class="line">        <span class="token keyword">return</span> instance<span class="token punctuation">;</span></span>
-<span class="line">    <span class="token punctuation">}</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">    public static Singleton getInstance() {</span>
+<span class="line">        if (instance == null) {</span>
+<span class="line">            instance = new Singleton();</span>
+<span class="line">        }</span>
+<span class="line">        return instance;</span>
+<span class="line">    }</span>
+<span class="line">}</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="3">
 <li><strong>懒汉式(线程安全)</strong>：</li>
 </ol>
-<div class="language-java line-numbers-mode" data-highlighter="prismjs" data-ext="java"><pre v-pre><code><span class="line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> instance<span class="token punctuation">;</span></span>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line">public class Singleton {</span>
+<span class="line">    private static Singleton instance;</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+<span class="line">    private Singleton() {}</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">synchronized</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">            instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
-<span class="line">        <span class="token punctuation">}</span></span>
-<span class="line">        <span class="token keyword">return</span> instance<span class="token punctuation">;</span></span>
-<span class="line">    <span class="token punctuation">}</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">    public static synchronized Singleton getInstance() {</span>
+<span class="line">        if (instance == null) {</span>
+<span class="line">            instance = new Singleton();</span>
+<span class="line">        }</span>
+<span class="line">        return instance;</span>
+<span class="line">    }</span>
+<span class="line">}</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="4">
 <li><strong>双重检查锁定</strong>：</li>
 </ol>
-<div class="language-java line-numbers-mode" data-highlighter="prismjs" data-ext="java"><pre v-pre><code><span class="line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">volatile</span> <span class="token class-name">Singleton</span> instance<span class="token punctuation">;</span></span>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line">public class Singleton {</span>
+<span class="line">    private static volatile Singleton instance;</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+<span class="line">    private Singleton() {}</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">            <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token class-name">Singleton</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">                <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">                    instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
-<span class="line">                <span class="token punctuation">}</span></span>
-<span class="line">            <span class="token punctuation">}</span></span>
-<span class="line">        <span class="token punctuation">}</span></span>
-<span class="line">        <span class="token keyword">return</span> instance<span class="token punctuation">;</span></span>
-<span class="line">    <span class="token punctuation">}</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">    public static Singleton getInstance() {</span>
+<span class="line">        if (instance == null) {</span>
+<span class="line">            synchronized (Singleton.class) {</span>
+<span class="line">                if (instance == null) {</span>
+<span class="line">                    instance = new Singleton();</span>
+<span class="line">                }</span>
+<span class="line">            }</span>
+<span class="line">        }</span>
+<span class="line">        return instance;</span>
+<span class="line">    }</span>
+<span class="line">}</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="5">
 <li><strong>静态内部类</strong>：</li>
 </ol>
-<div class="language-java line-numbers-mode" data-highlighter="prismjs" data-ext="java"><pre v-pre><code><span class="line"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line">public class Singleton {</span>
+<span class="line">    private Singleton() {}</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">SingletonHolder</span> <span class="token punctuation">{</span></span>
-<span class="line">        <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Singleton</span> <span class="token constant">INSTANCE</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
-<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">    private static class SingletonHolder {</span>
+<span class="line">        private static final Singleton INSTANCE = new Singleton();</span>
+<span class="line">    }</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">        <span class="token keyword">return</span> <span class="token class-name">SingletonHolder</span><span class="token punctuation">.</span><span class="token constant">INSTANCE</span><span class="token punctuation">;</span></span>
-<span class="line">    <span class="token punctuation">}</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">    public static Singleton getInstance() {</span>
+<span class="line">        return SingletonHolder.INSTANCE;</span>
+<span class="line">    }</span>
+<span class="line">}</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ol start="6">
 <li><strong>枚举</strong>：</li>
 </ol>
-<div class="language-java line-numbers-mode" data-highlighter="prismjs" data-ext="java"><pre v-pre><code><span class="line"><span class="token keyword">public</span> <span class="token keyword">enum</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token constant">INSTANCE</span><span class="token punctuation">;</span></span>
+<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre v-pre><code><span class="line">public enum Singleton {</span>
+<span class="line">    INSTANCE;</span>
 <span class="line">    </span>
-<span class="line">    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">        <span class="token comment">// 业务方法</span></span>
-<span class="line">    <span class="token punctuation">}</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">    public void doSomething() {</span>
+<span class="line">        // Business method</span>
+<span class="line">    }</span>
+<span class="line">}</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="总结" tabindex="-1"><a class="header-anchor" href="#总结"><span>总结</span></a></h2>
 <p>以上是Java基础相关的常见面试题及参考答案。这些知识点涵盖了Java语言的核心概念，是Java程序员必须掌握的基础知识。在准备面试时，不仅要记住这些知识点，还要理解其背后的原理和应用场景。</p>
