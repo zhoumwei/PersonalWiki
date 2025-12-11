@@ -1,5 +1,4 @@
 ---
-layout: doc
 title: Java内存模型(JMM)学习笔记
 ---
 

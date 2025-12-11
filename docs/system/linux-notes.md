@@ -1,5 +1,4 @@
 ---
-layout: doc
 title: Linux学习笔记
 ---
 

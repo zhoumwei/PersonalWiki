@@ -1,5 +1,4 @@
 ---
-layout: doc
 title: Java虚拟机(JVM)学习笔记
 ---
 

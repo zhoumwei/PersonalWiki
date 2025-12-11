@@ -1,5 +1,4 @@
 ---
-layout: doc
 title: Homebrew 使用教程
 ---
 

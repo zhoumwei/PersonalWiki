@@ -1,5 +1,4 @@
 ---
-layout: doc
 title: NVM 使用教程
 ---
 
