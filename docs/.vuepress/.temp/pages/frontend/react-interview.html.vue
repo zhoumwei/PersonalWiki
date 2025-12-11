@@ -1,0 +1,406 @@
+<template><div><h1 id="react-面试题" tabindex="-1"><a class="header-anchor" href="#react-面试题"><span>React 面试题</span></a></h1>
+<h2 id="目录" tabindex="-1"><a class="header-anchor" href="#目录"><span>目录</span></a></h2>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5">基础概念</a></li>
+<li><a href="#jsx">JSX</a></li>
+<li><a href="#%E7%BB%84%E4%BB%B6">组件</a></li>
+<li><a href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">生命周期</a></li>
+<li><a href="#hooks">Hooks</a></li>
+<li><a href="#%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86">状态管理</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1">路由</a></li>
+<li><a href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">性能优化</a></li>
+<li><a href="#redux">Redux</a></li>
+<li><a href="#react-18-%E6%96%B0%E7%89%B9%E6%80%A7">React 18 新特性</a></li>
+</ul>
+<hr>
+<h2 id="基础概念" tabindex="-1"><a class="header-anchor" href="#基础概念"><span>基础概念</span></a></h2>
+<h3 id="_1-什么是-react" tabindex="-1"><a class="header-anchor" href="#_1-什么是-react"><span>1. 什么是 React？</span></a></h3>
+<p>React 是 Facebook 开发的一个用于构建用户界面的 JavaScript 库，采用组件化开发思想。</p>
+<h3 id="_2-react-的特点" tabindex="-1"><a class="header-anchor" href="#_2-react-的特点"><span>2. React 的特点？</span></a></h3>
+<ul>
+<li>组件化开发</li>
+<li>虚拟 DOM</li>
+<li>单向数据流</li>
+<li>函数式编程</li>
+<li>生态丰富</li>
+</ul>
+<h3 id="_3-react-和-vue-的区别" tabindex="-1"><a class="header-anchor" href="#_3-react-和-vue-的区别"><span>3. React 和 Vue 的区别？</span></a></h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>React</th>
+<th>Vue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>编程范式</td>
+<td>函数式</td>
+<td>声明式</td>
+</tr>
+<tr>
+<td>模板</td>
+<td>JSX</td>
+<td>模板语法</td>
+</tr>
+<tr>
+<td>状态管理</td>
+<td>setState/hooks</td>
+<td>reactive/ref</td>
+</tr>
+<tr>
+<td>学习曲线</td>
+<td>较陡峭</td>
+<td>较平缓</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4-虚拟-dom-是什么" tabindex="-1"><a class="header-anchor" href="#_4-虚拟-dom-是什么"><span>4. 虚拟 DOM 是什么？</span></a></h3>
+<p>虚拟 DOM 是一个轻量级的 JavaScript 对象，它是真实 DOM 的抽象表示。通过 diff 算法比较前后虚拟 DOM 的差异，最小化地更新真实 DOM。</p>
+<hr>
+<h2 id="jsx" tabindex="-1"><a class="header-anchor" href="#jsx"><span>JSX</span></a></h2>
+<h3 id="_1-什么是-jsx" tabindex="-1"><a class="header-anchor" href="#_1-什么是-jsx"><span>1. 什么是 JSX？</span></a></h3>
+<p>JSX 是 JavaScript 的语法扩展，允许在 JS 中书写类似 HTML 的语法。</p>
+<h3 id="_2-jsx-和-html-的区别" tabindex="-1"><a class="header-anchor" href="#_2-jsx-和-html-的区别"><span>2. JSX 和 HTML 的区别？</span></a></h3>
+<ul>
+<li>class 变为 className</li>
+<li>for 变为 htmlFor</li>
+<li>内联样式使用对象形式</li>
+<li>事件处理使用驼峰命名</li>
+</ul>
+<h3 id="_3-为什么-react-不直接使用-html-模板" tabindex="-1"><a class="header-anchor" href="#_3-为什么-react-不直接使用-html-模板"><span>3. 为什么 React 不直接使用 HTML 模板？</span></a></h3>
+<ul>
+<li>更强的表达能力</li>
+<li>避免注入攻击</li>
+<li>更好的错误提示</li>
+<li>类型检查友好</li>
+</ul>
+<h3 id="_4-jsx-的本质" tabindex="-1"><a class="header-anchor" href="#_4-jsx-的本质"><span>4. JSX 的本质？</span></a></h3>
+<p>JSX 会被 Babel 编译成 React.createElement() 调用。</p>
+<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token comment">// JSX</span></span>
+<span class="line"><span class="token keyword">const</span> element <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">Hello, world!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 编译后</span></span>
+<span class="line"><span class="token keyword">const</span> element <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'Hello, world!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
+<h2 id="组件" tabindex="-1"><a class="header-anchor" href="#组件"><span>组件</span></a></h2>
+<h3 id="_1-函数组件和类组件的区别" tabindex="-1"><a class="header-anchor" href="#_1-函数组件和类组件的区别"><span>1. 函数组件和类组件的区别？</span></a></h3>
+<p>函数组件：</p>
+<ul>
+<li>更简洁</li>
+<li>性能更好</li>
+<li>更易于测试</li>
+<li>支持 Hooks</li>
+</ul>
+<p>类组件：</p>
+<ul>
+<li>有状态和生命周期</li>
+<li>有 this 指向问题</li>
+<li>更复杂</li>
+</ul>
+<h3 id="_2-受控组件和非受控组件" tabindex="-1"><a class="header-anchor" href="#_2-受控组件和非受控组件"><span>2. 受控组件和非受控组件？</span></a></h3>
+<p>受控组件：表单数据由 React 组件管理
+非受控组件：表单数据由 DOM 元素本身管理</p>
+<h3 id="_3-高阶组件-hoc" tabindex="-1"><a class="header-anchor" href="#_3-高阶组件-hoc"><span>3. 高阶组件（HOC）？</span></a></h3>
+<p>高阶组件是参数为组件，返回值为新组件的函数。</p>
+<p>用途：</p>
+<ul>
+<li>代码复用</li>
+<li>状态抽象和操作</li>
+<li>渲染劫持</li>
+</ul>
+<h3 id="_4-render-props" tabindex="-1"><a class="header-anchor" href="#_4-render-props"><span>4. Render Props？</span></a></h3>
+<p>Render Props 是一种在 React 组件之间使用一个值为函数的 prop 共享代码的简单技术。</p>
+<hr>
+<h2 id="生命周期" tabindex="-1"><a class="header-anchor" href="#生命周期"><span>生命周期</span></a></h2>
+<h3 id="_1-react-16-3-之前的生命周期" tabindex="-1"><a class="header-anchor" href="#_1-react-16-3-之前的生命周期"><span>1. React 16.3 之前的生命周期？</span></a></h3>
+<p>挂载阶段：</p>
+<ul>
+<li>constructor()</li>
+<li>componentWillMount()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ul>
+<p>更新阶段：</p>
+<ul>
+<li>componentWillReceiveProps()</li>
+<li>shouldComponentUpdate()</li>
+<li>componentWillUpdate()</li>
+<li>render()</li>
+<li>componentDidUpdate()</li>
+</ul>
+<p>卸载阶段：</p>
+<ul>
+<li>componentWillUnmount()</li>
+</ul>
+<h3 id="_2-react-16-3-之后的生命周期" tabindex="-1"><a class="header-anchor" href="#_2-react-16-3-之后的生命周期"><span>2. React 16.3 之后的生命周期？</span></a></h3>
+<p>挂载阶段：</p>
+<ul>
+<li>constructor()</li>
+<li>static getDerivedStateFromProps()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ul>
+<p>更新阶段：</p>
+<ul>
+<li>static getDerivedStateFromProps()</li>
+<li>shouldComponentUpdate()</li>
+<li>render()</li>
+<li>getSnapshotBeforeUpdate()</li>
+<li>componentDidUpdate()</li>
+</ul>
+<p>卸载阶段：</p>
+<ul>
+<li>componentWillUnmount()</li>
+</ul>
+<h3 id="_3-废弃的生命周期方法" tabindex="-1"><a class="header-anchor" href="#_3-废弃的生命周期方法"><span>3. 废弃的生命周期方法？</span></a></h3>
+<ul>
+<li>componentWillMount</li>
+<li>componentWillReceiveProps</li>
+<li>componentWillUpdate</li>
+</ul>
+<p>原因：这些生命周期方法经常被误用，容易导致问题。</p>
+<h3 id="_4-useeffect-相当于哪些生命周期" tabindex="-1"><a class="header-anchor" href="#_4-useeffect-相当于哪些生命周期"><span>4. useEffect 相当于哪些生命周期？</span></a></h3>
+<ul>
+<li>componentDidMount：useEffect(() =&gt; {}, [])</li>
+<li>componentDidUpdate：useEffect(() =&gt; {})</li>
+<li>componentWillUnmount：useEffect(() =&gt; { return () =&gt; {} }, [])</li>
+</ul>
+<hr>
+<h2 id="hooks" tabindex="-1"><a class="header-anchor" href="#hooks"><span>Hooks</span></a></h2>
+<h3 id="_1-什么是-hooks" tabindex="-1"><a class="header-anchor" href="#_1-什么是-hooks"><span>1. 什么是 Hooks？</span></a></h3>
+<p>Hooks 是 React 16.8 引入的新特性，让你可以在不编写 class 的情况下使用 state 以及其他的 React 特性。</p>
+<h3 id="_2-常用-hooks" tabindex="-1"><a class="header-anchor" href="#_2-常用-hooks"><span>2. 常用 Hooks？</span></a></h3>
+<ul>
+<li>useState：状态钩子</li>
+<li>useEffect：副作用钩子</li>
+<li>useContext：上下文钩子</li>
+<li>useReducer：状态管理钩子</li>
+<li>useMemo：记忆化钩子</li>
+<li>useCallback：回调钩子</li>
+<li>useRef：引用钩子</li>
+<li>useImperativeHandle：自定义暴露给父组件的实例值</li>
+<li>useLayoutEffect：布局副作用钩子</li>
+<li>useDebugValue：自定义 Hook 的调试值</li>
+</ul>
+<h3 id="_3-usestate-的使用" tabindex="-1"><a class="header-anchor" href="#_3-usestate-的使用"><span>3. useState 的使用？</span></a></h3>
+<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  </span>
+<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">You clicked </span><span class="token punctuation">{</span>count<span class="token punctuation">}</span><span class="token plain-text"> times</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">        Click me</span>
+<span class="line">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line">  <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-useeffect-的使用" tabindex="-1"><a class="header-anchor" href="#_4-useeffect-的使用"><span>4. useEffect 的使用？</span></a></h3>
+<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">  <span class="token comment">// 相当于 componentDidMount 和 componentDidUpdate</span></span>
+<span class="line">  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">    document<span class="token punctuation">.</span>title <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">You clicked </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>count<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> times</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">You clicked </span><span class="token punctuation">{</span>count<span class="token punctuation">}</span><span class="token plain-text"> times</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">        Click me</span>
+<span class="line">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line">  <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-自定义-hooks" tabindex="-1"><a class="header-anchor" href="#_5-自定义-hooks"><span>5. 自定义 Hooks？</span></a></h3>
+<p>自定义 Hooks 是一个函数，其名称以 &quot;use&quot; 开头，函数内部可以调用其他的 Hooks。</p>
+<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">useFriendStatus</span><span class="token punctuation">(</span><span class="token parameter">friendID</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">const</span> <span class="token punctuation">[</span>isOnline<span class="token punctuation">,</span> setIsOnline<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">function</span> <span class="token function">handleStatusChange</span><span class="token punctuation">(</span><span class="token parameter">status</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token function">setIsOnline</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span>isOnline<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">    ChatAPI<span class="token punctuation">.</span><span class="token function">subscribeToFriendStatus</span><span class="token punctuation">(</span>friendID<span class="token punctuation">,</span> handleStatusChange<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">      ChatAPI<span class="token punctuation">.</span><span class="token function">unsubscribeFromFriendStatus</span><span class="token punctuation">(</span>friendID<span class="token punctuation">,</span> handleStatusChange<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">  <span class="token keyword">return</span> isOnline<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
+<h2 id="状态管理" tabindex="-1"><a class="header-anchor" href="#状态管理"><span>状态管理</span></a></h2>
+<h3 id="_1-react-状态提升" tabindex="-1"><a class="header-anchor" href="#_1-react-状态提升"><span>1. React 状态提升？</span></a></h3>
+<p>当几个组件需要共享状态时，将共享状态提升到它们的最近共同父组件中。</p>
+<h3 id="_2-context-api" tabindex="-1"><a class="header-anchor" href="#_2-context-api"><span>2. Context API？</span></a></h3>
+<p>Context 提供了一种在组件树中传递数据的方式，而不必手动地在每一层传递 props。</p>
+<h3 id="_3-redux-和-context-的区别" tabindex="-1"><a class="header-anchor" href="#_3-redux-和-context-的区别"><span>3. Redux 和 Context 的区别？</span></a></h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Redux</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中间件支持</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>调试工具</td>
+<td>支持</td>
+<td>有限支持</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>大型应用</td>
+<td>小型应用</td>
+</tr>
+<tr>
+<td>学习成本</td>
+<td>较高</td>
+<td>较低</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="路由" tabindex="-1"><a class="header-anchor" href="#路由"><span>路由</span></a></h2>
+<h3 id="_1-react-router-是什么" tabindex="-1"><a class="header-anchor" href="#_1-react-router-是什么"><span>1. React Router 是什么？</span></a></h3>
+<p>React Router 是 React 应用的路由管理库，用于处理页面跳转和组件展示。</p>
+<h3 id="_2-常用组件" tabindex="-1"><a class="header-anchor" href="#_2-常用组件"><span>2. 常用组件？</span></a></h3>
+<ul>
+<li>BrowserRouter：路由容器</li>
+<li>Route：路由匹配组件</li>
+<li>Switch：只渲染第一个匹配的路由</li>
+<li>Link：导航链接</li>
+<li>NavLink：带样式的导航链接</li>
+<li>Redirect：重定向</li>
+</ul>
+<h3 id="_3-路由传参" tabindex="-1"><a class="header-anchor" href="#_3-路由传参"><span>3. 路由传参？</span></a></h3>
+<ul>
+<li>动态路由：<code v-pre>/user/:id</code></li>
+<li>查询参数：<code v-pre>/user?id=123</code></li>
+<li>state 传参：通过 history 对象传递</li>
+</ul>
+<h3 id="_4-路由守卫" tabindex="-1"><a class="header-anchor" href="#_4-路由守卫"><span>4. 路由守卫？</span></a></h3>
+<p>React Router 没有内置的路由守卫，可以通过高阶组件或自定义组件实现。</p>
+<hr>
+<h2 id="性能优化" tabindex="-1"><a class="header-anchor" href="#性能优化"><span>性能优化</span></a></h2>
+<h3 id="_1-react-memo" tabindex="-1"><a class="header-anchor" href="#_1-react-memo"><span>1. React.memo？</span></a></h3>
+<p>React.memo 是一个高阶组件，用于优化函数组件的重渲染问题。</p>
+<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token keyword">const</span> MyComponent <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">memo</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token comment">/* 使用 props 渲染 */</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-usememo" tabindex="-1"><a class="header-anchor" href="#_2-usememo"><span>2. useMemo？</span></a></h3>
+<p>useMemo 用于缓存计算结果，避免不必要的重复计算。</p>
+<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token keyword">const</span> memoizedValue <span class="token operator">=</span> <span class="token function">useMemo</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">computeExpensiveValue</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_3-usecallback" tabindex="-1"><a class="header-anchor" href="#_3-usecallback"><span>3. useCallback？</span></a></h3>
+<p>useCallback 用于缓存函数，避免子组件不必要的重渲染。</p>
+<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token keyword">const</span> memoizedCallback <span class="token operator">=</span> <span class="token function">useCallback</span><span class="token punctuation">(</span></span>
+<span class="line">  <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token function">doSomething</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-purecomponent-和-react-memo" tabindex="-1"><a class="header-anchor" href="#_4-purecomponent-和-react-memo"><span>4. PureComponent 和 React.memo？</span></a></h3>
+<p>PureComponent 是类组件的浅比较优化，React.memo 是函数组件的浅比较优化。</p>
+<h3 id="_5-虚拟滚动" tabindex="-1"><a class="header-anchor" href="#_5-虚拟滚动"><span>5. 虚拟滚动？</span></a></h3>
+<p>对于大量数据列表，使用虚拟滚动技术只渲染可视区域内的元素。</p>
+<h3 id="_6-懒加载组件" tabindex="-1"><a class="header-anchor" href="#_6-懒加载组件"><span>6. 懒加载组件？</span></a></h3>
+<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Suspense <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">const</span> OtherComponent <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">lazy</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./OtherComponent'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Suspense</span></span> <span class="token attr-name">fallback</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">Loading...</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">OtherComponent</span></span> <span class="token punctuation">/></span></span><span class="token plain-text"></span>
+<span class="line">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Suspense</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="line">    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span>
+<span class="line">  <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
+<h2 id="redux" tabindex="-1"><a class="header-anchor" href="#redux"><span>Redux</span></a></h2>
+<h3 id="_1-redux-的核心概念" tabindex="-1"><a class="header-anchor" href="#_1-redux-的核心概念"><span>1. Redux 的核心概念？</span></a></h3>
+<ul>
+<li>Store：存储应用状态</li>
+<li>Action：描述发生了什么</li>
+<li>Reducer：描述 Action 如何改变状态</li>
+<li>Dispatch：派发 Action</li>
+</ul>
+<h3 id="_2-redux-工作流程" tabindex="-1"><a class="header-anchor" href="#_2-redux-工作流程"><span>2. Redux 工作流程？</span></a></h3>
+<ol>
+<li>用户发起 Action</li>
+<li>Store 调用 Reducer 传入当前 State 和 Action</li>
+<li>Reducer 返回新的 State</li>
+<li>State 发生变化后，View 重新渲染</li>
+</ol>
+<h3 id="_3-redux-中间件" tabindex="-1"><a class="header-anchor" href="#_3-redux-中间件"><span>3. Redux 中间件？</span></a></h3>
+<p>中间件是位于 Action 发起之后，到达 Reducer 之前的扩展点。</p>
+<p>常用中间件：</p>
+<ul>
+<li>redux-thunk：处理异步操作</li>
+<li>redux-saga：处理复杂异步流程</li>
+<li>redux-logger：日志记录</li>
+</ul>
+<h3 id="_4-redux-toolkit" tabindex="-1"><a class="header-anchor" href="#_4-redux-toolkit"><span>4. Redux Toolkit？</span></a></h3>
+<p>Redux Toolkit 是官方推荐的编写 Redux 逻辑的方式，简化了 Redux 的使用。</p>
+<p>优势：</p>
+<ul>
+<li>简化 Redux Store 配置</li>
+<li>包含 Redux Thunk 中间件</li>
+<li>包含 Reselect 库</li>
+<li>减少样板代码</li>
+</ul>
+<hr>
+<h2 id="react-18-新特性" tabindex="-1"><a class="header-anchor" href="#react-18-新特性"><span>React 18 新特性</span></a></h2>
+<h3 id="_1-自动批处理" tabindex="-1"><a class="header-anchor" href="#_1-自动批处理"><span>1. 自动批处理？</span></a></h3>
+<p>React 18 通过默认启用批处理来获得更好的开箱即用性能。</p>
+<h3 id="_2-并发渲染" tabindex="-1"><a class="header-anchor" href="#_2-并发渲染"><span>2. 并发渲染？</span></a></h3>
+<p>并发渲染是一组 React 功能，帮助应用保持响应，并根据用户的设备性能和网速进行适当的调整。</p>
+<h3 id="_3-suspense-的改进" tabindex="-1"><a class="header-anchor" href="#_3-suspense-的改进"><span>3. Suspense 的改进？</span></a></h3>
+<p>React 18 中 Suspense 支持更多的功能，如 SSR 支持。</p>
+<h3 id="_4-新的-root-api" tabindex="-1"><a class="header-anchor" href="#_4-新的-root-api"><span>4. 新的 Root API？</span></a></h3>
+<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token comment">// React 17</span></span>
+<span class="line">ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> rootElement<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// React 18</span></span>
+<span class="line"><span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>rootElement<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-strict-mode-的改进" tabindex="-1"><a class="header-anchor" href="#_5-strict-mode-的改进"><span>5. Strict Mode 的改进？</span></a></h3>
+<p>React 18 中 Strict Mode 会在开发环境中模拟立即卸载和重新挂载每个组件，帮助发现意外的副作用。</p>
+<h3 id="_6-transition" tabindex="-1"><a class="header-anchor" href="#_6-transition"><span>6. Transition？</span></a></h3>
+<p>Transition 允许将状态更新标记为非紧急状态，从而降低更新的优先级。</p>
+<div class="language-jsx line-numbers-mode" data-highlighter="prismjs" data-ext="jsx"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> startTransition <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token function">startTransition</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token function">setSearchQuery</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+
+

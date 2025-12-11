@@ -1,0 +1,425 @@
+<template><div><h1 id="javascript-面试题" tabindex="-1"><a class="header-anchor" href="#javascript-面试题"><span>JavaScript 面试题</span></a></h1>
+<h2 id="目录" tabindex="-1"><a class="header-anchor" href="#目录"><span>目录</span></a></h2>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5">基础概念</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">数据类型</a></li>
+<li><a href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85">作用域和闭包</a></li>
+<li><a href="#this-%E6%8C%87%E5%90%91">this 指向</a></li>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE">原型和原型链</a></li>
+<li><a href="#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B">异步编程</a></li>
+<li><a href="#es6-%E7%89%B9%E6%80%A7">ES6+ 特性</a></li>
+<li><a href="#dom-%E6%93%8D%E4%BD%9C">DOM 操作</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86">事件处理</a></li>
+<li><a href="#ajax-%E5%92%8C-fetch">Ajax 和 Fetch</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97%E5%8C%96">模块化</a></li>
+<li><a href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">性能优化</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E9%A2%98">常见算法题</a></li>
+</ul>
+<hr>
+<h2 id="基础概念" tabindex="-1"><a class="header-anchor" href="#基础概念"><span>基础概念</span></a></h2>
+<h3 id="_1-什么是-javascript" tabindex="-1"><a class="header-anchor" href="#_1-什么是-javascript"><span>1. 什么是 JavaScript？</span></a></h3>
+<p>JavaScript 是一种轻量级的解释型或即时编译型的编程语言，主要用于 Web 页面开发，使网页具有交互性。</p>
+<h3 id="_2-javascript-的特点" tabindex="-1"><a class="header-anchor" href="#_2-javascript-的特点"><span>2. JavaScript 的特点？</span></a></h3>
+<ul>
+<li>解释型语言</li>
+<li>动态类型</li>
+<li>基于原型</li>
+<li>多范式（面向对象、命令式、声明式）</li>
+</ul>
+<h3 id="_3-javascript-与-ecmascript、dom、bom-的关系" tabindex="-1"><a class="header-anchor" href="#_3-javascript-与-ecmascript、dom、bom-的关系"><span>3. JavaScript 与 ECMAScript、DOM、BOM 的关系？</span></a></h3>
+<ul>
+<li>ECMAScript：JavaScript 的语法规范</li>
+<li>DOM：文档对象模型，提供操作 HTML 文档的接口</li>
+<li>BOM：浏览器对象模型，提供与浏览器交互的接口</li>
+</ul>
+<h3 id="_4-javascript-执行过程" tabindex="-1"><a class="header-anchor" href="#_4-javascript-执行过程"><span>4. JavaScript 执行过程？</span></a></h3>
+<p>JavaScript 代码的执行分为两个阶段：</p>
+<ol>
+<li>编译阶段：变量提升、函数提升</li>
+<li>执行阶段：代码逐行执行</li>
+</ol>
+<hr>
+<h2 id="数据类型" tabindex="-1"><a class="header-anchor" href="#数据类型"><span>数据类型</span></a></h2>
+<h3 id="_1-javascript-有哪些数据类型" tabindex="-1"><a class="header-anchor" href="#_1-javascript-有哪些数据类型"><span>1. JavaScript 有哪些数据类型？</span></a></h3>
+<p>JavaScript 有两种数据类型：</p>
+<p>基本数据类型（原始类型）：</p>
+<ul>
+<li>Number</li>
+<li>String</li>
+<li>Boolean</li>
+<li>Undefined</li>
+<li>Null</li>
+<li>Symbol (ES6)</li>
+<li>BigInt (ES2020)</li>
+</ul>
+<p>引用数据类型（对象类型）：</p>
+<ul>
+<li>Object</li>
+<li>Array</li>
+<li>Function</li>
+<li>Date</li>
+<li>RegExp 等</li>
+</ul>
+<h3 id="_2-null-和-undefined-的区别" tabindex="-1"><a class="header-anchor" href="#_2-null-和-undefined-的区别"><span>2. null 和 undefined 的区别？</span></a></h3>
+<ul>
+<li>null 表示一个空对象指针</li>
+<li>undefined 表示变量已声明但未赋值</li>
+</ul>
+<h3 id="_3-typeof-和-instanceof-的区别" tabindex="-1"><a class="header-anchor" href="#_3-typeof-和-instanceof-的区别"><span>3. typeof 和 instanceof 的区别？</span></a></h3>
+<ul>
+<li>typeof 用于判断基本数据类型（除了 null）</li>
+<li>instanceof 用于判断对象的具体类型</li>
+</ul>
+<h3 id="_4-如何判断数组" tabindex="-1"><a class="header-anchor" href="#_4-如何判断数组"><span>4. 如何判断数组？</span></a></h3>
+<ul>
+<li>Array.isArray()</li>
+<li>instanceof Array</li>
+<li>Object.prototype.toString.call()</li>
+</ul>
+<hr>
+<h2 id="作用域和闭包" tabindex="-1"><a class="header-anchor" href="#作用域和闭包"><span>作用域和闭包</span></a></h2>
+<h3 id="_1-什么是作用域" tabindex="-1"><a class="header-anchor" href="#_1-什么是作用域"><span>1. 什么是作用域？</span></a></h3>
+<p>作用域是指程序中变量、函数等可访问的范围。</p>
+<h3 id="_2-javascript-中的作用域类型" tabindex="-1"><a class="header-anchor" href="#_2-javascript-中的作用域类型"><span>2. JavaScript 中的作用域类型？</span></a></h3>
+<ul>
+<li>全局作用域</li>
+<li>函数作用域</li>
+<li>块级作用域（ES6 let/const）</li>
+</ul>
+<h3 id="_3-什么是闭包" tabindex="-1"><a class="header-anchor" href="#_3-什么是闭包"><span>3. 什么是闭包？</span></a></h3>
+<p>闭包是指有权访问另一个函数作用域中变量的函数。</p>
+<h3 id="_4-闭包的应用场景" tabindex="-1"><a class="header-anchor" href="#_4-闭包的应用场景"><span>4. 闭包的应用场景？</span></a></h3>
+<ul>
+<li>模块化开发</li>
+<li>私有变量模拟</li>
+<li>函数柯里化</li>
+<li>防抖节流</li>
+</ul>
+<h3 id="_5-闭包的缺点" tabindex="-1"><a class="header-anchor" href="#_5-闭包的缺点"><span>5. 闭包的缺点？</span></a></h3>
+<ul>
+<li>内存泄漏风险</li>
+<li>性能影响</li>
+</ul>
+<hr>
+<h2 id="this-指向" tabindex="-1"><a class="header-anchor" href="#this-指向"><span>this 指向</span></a></h2>
+<h3 id="_1-this-的指向规则" tabindex="-1"><a class="header-anchor" href="#_1-this-的指向规则"><span>1. this 的指向规则？</span></a></h3>
+<ol>
+<li>默认绑定：独立函数调用，this 指向全局对象（严格模式下是 undefined）</li>
+<li>隐式绑定：对象方法调用，this 指向调用对象</li>
+<li>显式绑定：call/apply/bind，this 指向传入的对象</li>
+<li>new 绑定：构造函数调用，this 指向新创建的对象</li>
+</ol>
+<h3 id="_2-箭头函数的-this" tabindex="-1"><a class="header-anchor" href="#_2-箭头函数的-this"><span>2. 箭头函数的 this？</span></a></h3>
+<p>箭头函数没有自己的 this，它的 this 继承自外层作用域。</p>
+<h3 id="_3-如何改变-this-指向" tabindex="-1"><a class="header-anchor" href="#_3-如何改变-this-指向"><span>3. 如何改变 this 指向？</span></a></h3>
+<ul>
+<li>call()</li>
+<li>apply()</li>
+<li>bind()</li>
+</ul>
+<hr>
+<h2 id="原型和原型链" tabindex="-1"><a class="header-anchor" href="#原型和原型链"><span>原型和原型链</span></a></h2>
+<h3 id="_1-什么是原型" tabindex="-1"><a class="header-anchor" href="#_1-什么是原型"><span>1. 什么是原型？</span></a></h3>
+<p>每个函数都有一个 prototype 属性，这个属性指向函数的原型对象。</p>
+<h3 id="_2-什么是原型链" tabindex="-1"><a class="header-anchor" href="#_2-什么是原型链"><span>2. 什么是原型链？</span></a></h3>
+<p>当试图访问一个对象的属性时，如果对象本身没有这个属性，就会沿着原型链向上查找。</p>
+<h3 id="_3-原型链的终点" tabindex="-1"><a class="header-anchor" href="#_3-原型链的终点"><span>3. 原型链的终点？</span></a></h3>
+<p>Object.prototype.<strong>proto</strong> === null</p>
+<h3 id="_4-instanceof-的原理" tabindex="-1"><a class="header-anchor" href="#_4-instanceof-的原理"><span>4. instanceof 的原理？</span></a></h3>
+<p>判断构造函数的 prototype 属性是否出现在实例对象的原型链上。</p>
+<h3 id="_5-如何实现继承" tabindex="-1"><a class="header-anchor" href="#_5-如何实现继承"><span>5. 如何实现继承？</span></a></h3>
+<ul>
+<li>原型链继承</li>
+<li>借用构造函数继承</li>
+<li>组合继承</li>
+<li>原型式继承</li>
+<li>寄生式继承</li>
+<li>寄生组合式继承</li>
+<li>ES6 Class 继承</li>
+</ul>
+<hr>
+<h2 id="异步编程" tabindex="-1"><a class="header-anchor" href="#异步编程"><span>异步编程</span></a></h2>
+<h3 id="_1-javascript-是单线程还是多线程" tabindex="-1"><a class="header-anchor" href="#_1-javascript-是单线程还是多线程"><span>1. JavaScript 是单线程还是多线程？</span></a></h3>
+<p>JavaScript 是单线程的，但可以通过浏览器提供的 Web APIs 实现异步。</p>
+<h3 id="_2-事件循环-event-loop" tabindex="-1"><a class="header-anchor" href="#_2-事件循环-event-loop"><span>2. 事件循环（Event Loop）？</span></a></h3>
+<p>JavaScript 运行环境通过事件循环机制处理异步任务。</p>
+<h3 id="_3-宏任务和微任务" tabindex="-1"><a class="header-anchor" href="#_3-宏任务和微任务"><span>3. 宏任务和微任务？</span></a></h3>
+<p>宏任务：</p>
+<ul>
+<li>setTimeout</li>
+<li>setInterval</li>
+<li>I/O 操作</li>
+</ul>
+<p>微任务：</p>
+<ul>
+<li>Promise.then</li>
+<li>MutationObserver</li>
+<li>queueMicrotask</li>
+</ul>
+<p>执行顺序：同步代码 &gt; 微任务 &gt; 宏任务</p>
+<h3 id="_4-promise-是什么" tabindex="-1"><a class="header-anchor" href="#_4-promise-是什么"><span>4. Promise 是什么？</span></a></h3>
+<p>Promise 是异步编程的一种解决方案，比传统的回调函数更加合理和强大。</p>
+<h3 id="_5-async-await-的作用" tabindex="-1"><a class="header-anchor" href="#_5-async-await-的作用"><span>5. async/await 的作用？</span></a></h3>
+<p>async/await 是基于 Promise 的语法糖，让异步代码看起来像同步代码。</p>
+<hr>
+<h2 id="es6-特性" tabindex="-1"><a class="header-anchor" href="#es6-特性"><span>ES6+ 特性</span></a></h2>
+<h3 id="_1-let、const-和-var-的区别" tabindex="-1"><a class="header-anchor" href="#_1-let、const-和-var-的区别"><span>1. let、const 和 var 的区别？</span></a></h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>var</th>
+<th>let</th>
+<th>const</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>作用域</td>
+<td>函数作用域</td>
+<td>块级作用域</td>
+<td>块级作用域</td>
+</tr>
+<tr>
+<td>变量提升</td>
+<td>是</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>重复声明</td>
+<td>允许</td>
+<td>不允许</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>重新赋值</td>
+<td>允许</td>
+<td>允许</td>
+<td>不允许</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2-箭头函数与普通函数的区别" tabindex="-1"><a class="header-anchor" href="#_2-箭头函数与普通函数的区别"><span>2. 箭头函数与普通函数的区别？</span></a></h3>
+<ul>
+<li>箭头函数没有自己的 this</li>
+<li>箭头函数不能用作构造函数</li>
+<li>箭头函数没有 arguments 对象</li>
+<li>箭头函数不能用 yield 命令</li>
+</ul>
+<h3 id="_3-解构赋值" tabindex="-1"><a class="header-anchor" href="#_3-解构赋值"><span>3. 解构赋值？</span></a></h3>
+<p>从数组或对象中提取值，按照一定模式赋值给变量。</p>
+<h3 id="_4-模板字符串" tabindex="-1"><a class="header-anchor" href="#_4-模板字符串"><span>4. 模板字符串？</span></a></h3>
+<p>使用反引号 `` 包裹字符串，支持多行和变量插值。</p>
+<h3 id="_5-set-和-map" tabindex="-1"><a class="header-anchor" href="#_5-set-和-map"><span>5. Set 和 Map？</span></a></h3>
+<ul>
+<li>Set：类似于数组，但成员的值都是唯一的</li>
+<li>Map：类似于对象，但键可以是任意类型</li>
+</ul>
+<h3 id="_6-模块化" tabindex="-1"><a class="header-anchor" href="#_6-模块化"><span>6. 模块化？</span></a></h3>
+<p>ES6 模块化通过 export 和 import 实现。</p>
+<hr>
+<h2 id="dom-操作" tabindex="-1"><a class="header-anchor" href="#dom-操作"><span>DOM 操作</span></a></h2>
+<h3 id="_1-获取元素的方法" tabindex="-1"><a class="header-anchor" href="#_1-获取元素的方法"><span>1. 获取元素的方法？</span></a></h3>
+<ul>
+<li>document.getElementById()</li>
+<li>document.getElementsByClassName()</li>
+<li>document.getElementsByTagName()</li>
+<li>document.querySelector()</li>
+<li>document.querySelectorAll()</li>
+</ul>
+<h3 id="_2-dom-节点操作" tabindex="-1"><a class="header-anchor" href="#_2-dom-节点操作"><span>2. DOM 节点操作？</span></a></h3>
+<ul>
+<li>createElement()</li>
+<li>appendChild()</li>
+<li>removeChild()</li>
+<li>replaceChild()</li>
+<li>insertBefore()</li>
+</ul>
+<h3 id="_3-元素属性操作" tabindex="-1"><a class="header-anchor" href="#_3-元素属性操作"><span>3. 元素属性操作？</span></a></h3>
+<ul>
+<li>getAttribute()</li>
+<li>setAttribute()</li>
+<li>removeAttribute()</li>
+</ul>
+<hr>
+<h2 id="事件处理" tabindex="-1"><a class="header-anchor" href="#事件处理"><span>事件处理</span></a></h2>
+<h3 id="_1-事件流" tabindex="-1"><a class="header-anchor" href="#_1-事件流"><span>1. 事件流？</span></a></h3>
+<p>事件流包括三个阶段：</p>
+<ol>
+<li>事件捕获阶段</li>
+<li>目标阶段</li>
+<li>事件冒泡阶段</li>
+</ol>
+<h3 id="_2-事件委托" tabindex="-1"><a class="header-anchor" href="#_2-事件委托"><span>2. 事件委托？</span></a></h3>
+<p>利用事件冒泡机制，将子元素的事件处理委托给父元素。</p>
+<h3 id="_3-事件监听器" tabindex="-1"><a class="header-anchor" href="#_3-事件监听器"><span>3. 事件监听器？</span></a></h3>
+<ul>
+<li>addEventListener()</li>
+<li>removeEventListener()</li>
+</ul>
+<hr>
+<h2 id="ajax-和-fetch" tabindex="-1"><a class="header-anchor" href="#ajax-和-fetch"><span>Ajax 和 Fetch</span></a></h2>
+<h3 id="_1-ajax-是什么" tabindex="-1"><a class="header-anchor" href="#_1-ajax-是什么"><span>1. Ajax 是什么？</span></a></h3>
+<p>Ajax（Asynchronous JavaScript and XML）是一种在不重新加载整个网页的情况下，能够更新部分网页的技术。</p>
+<h3 id="_2-xmlhttprequest-对象" tabindex="-1"><a class="header-anchor" href="#_2-xmlhttprequest-对象"><span>2. XMLHttpRequest 对象？</span></a></h3>
+<p>原生实现 Ajax 的核心对象。</p>
+<h3 id="_3-fetch-api" tabindex="-1"><a class="header-anchor" href="#_3-fetch-api"><span>3. Fetch API？</span></a></h3>
+<p>现代浏览器提供的更优雅的异步请求 API，基于 Promise。</p>
+<h3 id="_4-axios" tabindex="-1"><a class="header-anchor" href="#_4-axios"><span>4. Axios？</span></a></h3>
+<p>基于 Promise 的 HTTP 客户端，可以用在浏览器和 node.js 中。</p>
+<hr>
+<h2 id="模块化" tabindex="-1"><a class="header-anchor" href="#模块化"><span>模块化</span></a></h2>
+<h3 id="_1-为什么要模块化" tabindex="-1"><a class="header-anchor" href="#_1-为什么要模块化"><span>1. 为什么要模块化？</span></a></h3>
+<ul>
+<li>避免命名冲突</li>
+<li>便于依赖管理</li>
+<li>提高代码可维护性</li>
+<li>提高代码复用性</li>
+</ul>
+<h3 id="_2-模块化规范" tabindex="-1"><a class="header-anchor" href="#_2-模块化规范"><span>2. 模块化规范？</span></a></h3>
+<ul>
+<li>CommonJS（Node.js）</li>
+<li>AMD（RequireJS）</li>
+<li>CMD（SeaJS）</li>
+<li>ES6 Module</li>
+</ul>
+<h3 id="_3-commonjs-和-es6-module-的区别" tabindex="-1"><a class="header-anchor" href="#_3-commonjs-和-es6-module-的区别"><span>3. CommonJS 和 ES6 Module 的区别？</span></a></h3>
+<ul>
+<li>CommonJS 是运行时加载，ES6 Module 是编译时输出接口</li>
+<li>CommonJS 输出的是值的拷贝，ES6 Module 输出的是值的引用</li>
+</ul>
+<hr>
+<h2 id="性能优化" tabindex="-1"><a class="header-anchor" href="#性能优化"><span>性能优化</span></a></h2>
+<h3 id="_1-减少-http-请求" tabindex="-1"><a class="header-anchor" href="#_1-减少-http-请求"><span>1. 减少 HTTP 请求？</span></a></h3>
+<ul>
+<li>合并文件</li>
+<li>雪碧图</li>
+<li>使用 Base64</li>
+</ul>
+<h3 id="_2-减少-dom-操作" tabindex="-1"><a class="header-anchor" href="#_2-减少-dom-操作"><span>2. 减少 DOM 操作？</span></a></h3>
+<ul>
+<li>批量操作 DOM</li>
+<li>使用 DocumentFragment</li>
+<li>缓存 DOM 查询结果</li>
+</ul>
+<h3 id="_3-防抖和节流" tabindex="-1"><a class="header-anchor" href="#_3-防抖和节流"><span>3. 防抖和节流？</span></a></h3>
+<ul>
+<li>防抖：事件触发后等待一段时间再执行，如果期间再次触发则重新计时</li>
+<li>节流：保证一定时间内只执行一次</li>
+</ul>
+<h3 id="_4-懒加载" tabindex="-1"><a class="header-anchor" href="#_4-懒加载"><span>4. 懒加载？</span></a></h3>
+<p>延迟加载图片或其他资源，减少初始加载时间。</p>
+<h3 id="_5-web-workers" tabindex="-1"><a class="header-anchor" href="#_5-web-workers"><span>5. Web Workers？</span></a></h3>
+<p>在后台线程中运行脚本，避免阻塞用户界面。</p>
+<hr>
+<h2 id="常见算法题" tabindex="-1"><a class="header-anchor" href="#常见算法题"><span>常见算法题</span></a></h2>
+<h3 id="_1-数组去重" tabindex="-1"><a class="header-anchor" href="#_1-数组去重"><span>1. 数组去重？</span></a></h3>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre v-pre><code><span class="line"><span class="token comment">// 使用 Set</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">unique</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 使用 filter + indexOf</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">unique</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=></span> arr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token operator">===</span> index<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-深拷贝" tabindex="-1"><a class="header-anchor" href="#_2-深拷贝"><span>2. 深拷贝？</span></a></h3>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre v-pre><code><span class="line"><span class="token comment">// 递归实现</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">deepClone</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> obj <span class="token operator">!==</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token keyword">return</span> obj<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">Date</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">RegExp</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  </span>
+<span class="line">  <span class="token keyword">let</span> cloneObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">obj<span class="token punctuation">.</span>constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      cloneObj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token keyword">return</span> cloneObj<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-数组扁平化" tabindex="-1"><a class="header-anchor" href="#_3-数组扁平化"><span>3. 数组扁平化？</span></a></h3>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre v-pre><code><span class="line"><span class="token comment">// 递归实现</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">flatten</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      result <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token function">flatten</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">      result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token keyword">return</span> result<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 使用 flat 方法</span></span>
+<span class="line">arr<span class="token punctuation">.</span><span class="token function">flat</span><span class="token punctuation">(</span><span class="token number">Infinity</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-手写-promise" tabindex="-1"><a class="header-anchor" href="#_4-手写-promise"><span>4. 手写 Promise？</span></a></h3>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre v-pre><code><span class="line"><span class="token keyword">class</span> <span class="token class-name">MyPromise</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">executor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token string">'pending'</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">this</span><span class="token punctuation">.</span>reason <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">this</span><span class="token punctuation">.</span>onResolvedCallbacks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">this</span><span class="token punctuation">.</span>onRejectedCallbacks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line">    </span>
+<span class="line">    <span class="token keyword">let</span> <span class="token function-variable function">resolve</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">===</span> <span class="token string">'pending'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token string">'fulfilled'</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">this</span><span class="token punctuation">.</span>onResolvedCallbacks<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">fn</span> <span class="token operator">=></span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">    </span>
+<span class="line">    <span class="token keyword">let</span> <span class="token function-variable function">reject</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">===</span> <span class="token string">'pending'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token string">'rejected'</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">this</span><span class="token punctuation">.</span>reason <span class="token operator">=</span> reason<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">this</span><span class="token punctuation">.</span>onRejectedCallbacks<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">fn</span> <span class="token operator">=></span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">    </span>
+<span class="line">    <span class="token keyword">try</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token function">executor</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  </span>
+<span class="line">  <span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">onFulfilled<span class="token punctuation">,</span> onRejected</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">===</span> <span class="token string">'fulfilled'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token function">onFulfilled</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">===</span> <span class="token string">'rejected'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token function">onRejected</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>reason<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">===</span> <span class="token string">'pending'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token keyword">this</span><span class="token punctuation">.</span>onResolvedCallbacks<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token function">onFulfilled</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">this</span><span class="token punctuation">.</span>onRejectedCallbacks<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token function">onRejected</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>reason<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-实现-instanceof" tabindex="-1"><a class="header-anchor" href="#_5-实现-instanceof"><span>5. 实现 instanceof？</span></a></h3>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre v-pre><code><span class="line"><span class="token keyword">function</span> <span class="token function">myInstanceof</span><span class="token punctuation">(</span><span class="token parameter">left<span class="token punctuation">,</span> right</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">let</span> proto <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">let</span> prototype <span class="token operator">=</span> right<span class="token punctuation">.</span>prototype<span class="token punctuation">;</span></span>
+<span class="line">  </span>
+<span class="line">  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>proto <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>proto <span class="token operator">===</span> prototype<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="line">    proto <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>proto<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+
+
